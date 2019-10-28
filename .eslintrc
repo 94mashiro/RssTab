@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": [2, { "singleQuote": true }],
+    "@typescript-eslint/no-use-before-define": 1,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "import/named": 0
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "parser": "@typescript-eslint/parser"
+}

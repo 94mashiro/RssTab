@@ -1,0 +1,13 @@
+.setting-dropdown {
+  display: inline-block;
+  height: 100%;
+  padding: 0 12px;
+  cursor: pointer;
+  transition: all .3s;
+  &:hover {
+    background-color: #efefef;
+  }
+  .anticon {
+    color: #9fa5b1;
+  }
+}

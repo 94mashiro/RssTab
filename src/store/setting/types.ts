@@ -1,0 +1,4 @@
+export enum SettingActionTypes {
+  SET_ACTIVE_SEARCH_ENGINE = '@@setting/SET_ACTIVE_SEARCH_ENGINE',
+  SEARCH_KEYWORD_ACTION = '@@setting/SEARCH_KEYWORD_ACTION',
+}

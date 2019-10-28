@@ -1,0 +1,13 @@
+.header {
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+  line-height: 54px;
+  padding: 0 20px;
+  .search-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}

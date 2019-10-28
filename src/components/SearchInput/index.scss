@@ -1,0 +1,16 @@
+.search-input {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  border-bottom: 1px solid transparent;
+  &:hover {
+    border-bottom: 1px solid #f3f3f3;
+  }
+  &:active {
+    border: 0;
+  }
+  &:focus {
+    box-shadow: none;
+    border-bottom: 1px solid #e3e3e3;
+  }
+}

@@ -1,0 +1,21 @@
+.search-engine-selector {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  color: #9fa5b1;
+  font-size: 16px;
+  margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+  .anticon {
+    margin-left: 5px;
+    font-size: 12px;
+  }
+}
+
+.search-engine-dropdown {
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "RssTab",
+  "description": "RSS Reader for Chrome new tab page.",
+  "version": "1.0.0",
+  "icons": {
+    "16": "image/icon-16.png",
+    "128": "image/icon-128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "image/icon-38.png",
+      "38": "image/icon-19.png"
+    },
+    "default_title": "RssHub For New Tab"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "static/js/background.chunk.js"
+    ]
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
