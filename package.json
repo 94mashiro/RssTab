@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "MashiroWang",
-  "homepage": "https://github.com/mashirowang/rsstab",
   "description": "A chrome extension that shows the RSS reader in a new page",
   "dependencies": {
     "@babel/core": "7.6.0",
