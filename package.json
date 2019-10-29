@@ -1,7 +1,10 @@
 {
   "name": "rsstab",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "MashiroWang",
+  "homepage": "https://github.com/mashirowang/rsstab",
+  "description": "A chrome extension that shows the RSS reader in a new page",
   "dependencies": {
     "@babel/core": "7.6.0",
     "@svgr/webpack": "4.3.2",
