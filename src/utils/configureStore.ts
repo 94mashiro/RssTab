@@ -1,9 +1,10 @@
-import { persistStore, persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 import localforage from 'localforage';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
-import reducers, { RootState, rootSaga } from '../store';
+
+import reducers, { rootSaga, RootState } from '../store';
 
 const sagaMiddleware = createSagaMiddleware();
 

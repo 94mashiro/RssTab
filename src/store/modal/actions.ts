@@ -1,4 +1,5 @@
 import { createAction } from 'typesafe-actions';
+
 import { ModalActionTypes } from './types';
 
 export const setShowSubscriptionsSettingModal = createAction(

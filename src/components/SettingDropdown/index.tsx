@@ -1,8 +1,10 @@
-import React, { useMemo, useCallback } from 'react';
-import { Icon, Dropdown, Menu } from 'antd';
-import { useDispatch } from 'react-redux';
 import './index.scss';
+
+import { Dropdown, Icon, Menu } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { setShowSubscriptionsSettingModal } from '../../store/modal/actions';
 
 const SettingDropdown: React.FC = () => {

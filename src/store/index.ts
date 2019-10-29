@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
-import { SubscriptionState, subscriptionReducer } from './subscription/reducer';
-import { SettingState, settingReducer } from './setting/reducer';
 import { all, fork } from 'redux-saga/effects';
-import { subscriptionSaga } from './subscription/sagas';
+
+import { constantReducer, ConstantState } from './constant/reducer';
+import { modalReducer, ModalState } from './modal/reducers';
+import { settingReducer, SettingState } from './setting/reducer';
 import { settingSaga } from './setting/sagas';
-import { ConstantState, constantReducer } from './constant/reducer';
-import { ModalState, modalReducer } from './modal/reducers';
+import { subscriptionReducer, SubscriptionState } from './subscription/reducer';
+import { subscriptionSaga } from './subscription/sagas';
 
 export type RootState = {
   subscription: SubscriptionState;

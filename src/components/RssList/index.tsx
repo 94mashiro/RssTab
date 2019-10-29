@@ -1,17 +1,21 @@
-import React, { useMemo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import RssListItem from '../RssListItem';
+import './index.scss';
+
 import { get } from 'lodash-es';
+import React, { useCallback, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
 
-import './index.scss';
+import { RootState } from '../../store';
+import RssListItem from '../RssListItem';
+
 const RssList: React.FC = () => {
   const listItems = useSelector((state: RootState) => {
     const activeRssList = state.subscription.activeSubList || '';
     const list = get(state.subscription, ['list', activeRssList, 'items']) || [];
-    const sortedList = list.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+    const sortedList = list.sort(
+      (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+    );
     return sortedList;
   });
   const itemCount = useMemo(() => {
@@ -29,7 +33,13 @@ const RssList: React.FC = () => {
             padding: '0 24px',
           }}
         >
-          <RssListItem key={link} title={title} description={description} link={link} pubdate={pubDate} />
+          <RssListItem
+            key={link}
+            title={title}
+            description={description}
+            link={link}
+            pubdate={pubDate}
+          />
         </div>
       );
     },
@@ -38,7 +48,13 @@ const RssList: React.FC = () => {
   return listItems.length > 0 ? (
     <AutoSizer>
       {({ height, width }) => (
-        <List height={height} width={width} itemCount={itemCount} itemSize={130} className="virtualize-list">
+        <List
+          height={height}
+          width={width}
+          itemCount={itemCount}
+          itemSize={130}
+          className="virtualize-list"
+        >
           {renderRow}
         </List>
       )}

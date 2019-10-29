@@ -1,17 +1,21 @@
+import './index.scss';
+
+import { Button, Checkbox, Col, message, Modal, Row } from 'antd';
+import { CheckboxValueType } from 'antd/lib/checkbox/Group';
+import { groupBy } from 'lodash-es';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Modal, Checkbox, Row, Col, Button, message } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { RootState } from '../../store';
 import { setShowSubscriptionsSettingModal } from '../../store/modal/actions';
-import './index.scss';
-import { groupBy } from 'lodash-es';
-import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { setEnabledSubscriptions } from '../../store/subscription/actions';
 
 const SubscriptionsSettingContent: React.FC = () => {
   const dispatch = useDispatch();
   const rssEndpoints = useSelector((state: RootState) => state.constant.rssEndpoints);
-  const enabledSubscriptions = useSelector((state: RootState) => state.subscription.enabledSubscriptions);
+  const enabledSubscriptions = useSelector(
+    (state: RootState) => state.subscription.enabledSubscriptions
+  );
   const [selectedSubscriptions, setSelectedSubscriptions] = useState(enabledSubscriptions);
   const groupedEndpoints = useMemo(() => {
     return groupBy(rssEndpoints, item => item.category);

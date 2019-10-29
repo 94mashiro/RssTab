@@ -1,6 +1,7 @@
-import { all, fork, take, select } from 'redux-saga/effects';
-import { RootState } from '..';
 import { find } from 'lodash-es';
+import { all, fork, select, take } from 'redux-saga/effects';
+
+import { RootState } from '..';
 import { SettingActionTypes } from './types';
 
 function* watchKeywordSearchRequest() {

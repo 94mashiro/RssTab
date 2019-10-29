@@ -1,16 +1,19 @@
-import { all, fork, take, call, put, select, delay } from 'redux-saga/effects';
-import * as SubscriptionActions from './actions';
-import { parseXmlToJson } from '../../utils/xml';
-import { RootState } from '..';
-import { get, uniqBy } from 'lodash-es';
-import { SubscriptionActionTypes, Subscription } from './types';
-import { Site } from '../constant/reducer';
 import { message } from 'antd';
 import dayjs from 'dayjs';
+import { get, uniqBy } from 'lodash-es';
+import { all, call, delay, fork, put, select, take } from 'redux-saga/effects';
+
+import { RootState } from '..';
 import { fetchRssHubXml } from '../../utils/api';
+import { parseXmlToJson } from '../../utils/xml';
+import { Site } from '../constant/reducer';
+import * as SubscriptionActions from './actions';
+import { Subscription, SubscriptionActionTypes } from './types';
 
 function* mergeSubscription(link: string, data: Subscription) {
-  const storeSubscription = yield select((state: RootState) => get(state.subscription.list, [link]));
+  const storeSubscription = yield select((state: RootState) =>
+    get(state.subscription.list, [link])
+  );
   const oldLength = get(storeSubscription, ['items'], []).length;
   let mergedSubscription;
   if (!storeSubscription) {
@@ -64,8 +67,14 @@ function* fetchSubscription(link: string) {
     const { data: xmlData } = yield call(fetchRssHubXml, link);
     const json = yield call(parseXmlToJson, xmlData);
     const parsedSubscription = yield call(parseSubscription, json);
-    const [mergedSubscription, hasNewArticles] = yield call(mergeSubscription, link, parsedSubscription);
-    let remindSubscriptions = yield select((state: RootState) => state.subscription.remindSubscriptions);
+    const [mergedSubscription, hasNewArticles] = yield call(
+      mergeSubscription,
+      link,
+      parsedSubscription
+    );
+    let remindSubscriptions = yield select(
+      (state: RootState) => state.subscription.remindSubscriptions
+    );
     if (hasNewArticles && !remindSubscriptions.includes(link)) {
       remindSubscriptions = [...remindSubscriptions, link];
       yield put(SubscriptionActions.setRemindSubscriptions(remindSubscriptions));
@@ -83,8 +92,12 @@ function* watchRefreshSubscriptions() {
     } = yield take(SubscriptionActionTypes.REFRESH_SUBSCRIPTIONS_REQUEST);
     try {
       const rssEndpoints: Site[] = yield select((state: RootState) => state.constant.rssEndpoints);
-      const enabledSubscriptions = yield select((state: RootState) => state.subscription.enabledSubscriptions);
-      const refreshSubscriptions = rssEndpoints.filter(endpoint => enabledSubscriptions.includes(endpoint.link));
+      const enabledSubscriptions = yield select(
+        (state: RootState) => state.subscription.enabledSubscriptions
+      );
+      const refreshSubscriptions = rssEndpoints.filter(endpoint =>
+        enabledSubscriptions.includes(endpoint.link)
+      );
       const refreshActions = refreshSubscriptions.map(item => {
         return call(fetchSubscription, item.link);
       });
@@ -101,8 +114,12 @@ function* watchRefreshSubscriptions() {
 
 function* watchSetEnabledSubscriptions() {
   while (true) {
-    const { payload: enabledSubscriptions } = yield take(SubscriptionActionTypes.SET_ENABLED_SUBSCRIPTIONS);
-    const currentActiveSubscription = yield select((state: RootState) => state.subscription.activeSubList);
+    const { payload: enabledSubscriptions } = yield take(
+      SubscriptionActionTypes.SET_ENABLED_SUBSCRIPTIONS
+    );
+    const currentActiveSubscription = yield select(
+      (state: RootState) => state.subscription.activeSubList
+    );
     const updatedSubscriptions = yield select((state: RootState) => {
       const rssEndpoints = state.constant.rssEndpoints;
       return rssEndpoints
@@ -123,9 +140,13 @@ function* watchSetEnabledSubscriptions() {
 function* watchSetActiveSubscription() {
   while (true) {
     const { payload: activeSubscription } = yield take(SubscriptionActionTypes.SET_ACTIVE_SUB_LIST);
-    const remindSubscriptions = yield select((state: RootState) => state.subscription.remindSubscriptions);
+    const remindSubscriptions = yield select(
+      (state: RootState) => state.subscription.remindSubscriptions
+    );
     if (remindSubscriptions.includes(activeSubscription)) {
-      const updatedRemindSubscriptions = remindSubscriptions.filter((sub: string) => sub !== activeSubscription);
+      const updatedRemindSubscriptions = remindSubscriptions.filter(
+        (sub: string) => sub !== activeSubscription
+      );
       yield put(SubscriptionActions.setRemindSubscriptions(updatedRemindSubscriptions));
     }
   }

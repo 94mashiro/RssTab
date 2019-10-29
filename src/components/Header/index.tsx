@@ -1,7 +1,9 @@
-import React from 'react';
-import { Icon } from 'antd';
-import SearchEngineSelector from '../SearchEngineSelector';
 import './index.scss';
+
+import { Icon } from 'antd';
+import React from 'react';
+
+import SearchEngineSelector from '../SearchEngineSelector';
 import SearchInput from '../SearchInput';
 import SettingDropdown from '../SettingDropdown';
 

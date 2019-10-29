@@ -1,8 +1,10 @@
-import React, { useCallback, useState } from 'react';
-import { Input } from 'antd';
-import { useDispatch } from 'react-redux';
-import { searchKeywordAction } from '../../store/setting/actions';
 import './index.scss';
+
+import { Input } from 'antd';
+import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { searchKeywordAction } from '../../store/setting/actions';
 
 const SearchInput: React.FC = () => {
   const [keyword, setKeyword] = useState('');

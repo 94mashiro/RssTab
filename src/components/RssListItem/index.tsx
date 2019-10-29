@@ -1,6 +1,7 @@
-import React, { useMemo, useState, useCallback } from 'react';
-import dayjs from 'dayjs';
 import './index.scss';
+
+import dayjs from 'dayjs';
+import React, { useCallback, useMemo, useState } from 'react';
 
 interface Props {
   title: string;
@@ -49,7 +50,7 @@ const RssListItem: React.FC<Props> = (props: Props) => {
 
   return (
     <div className="rss-list-item">
-      <a href={props.link} target="_blank">
+      <a href={props.link} rel="noopener noreferrer" target="_blank">
         <div className="item-header">
           <div className="title">{props.title}</div>
           <div className="date">{timeAgo}</div>

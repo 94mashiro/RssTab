@@ -1,9 +1,11 @@
-import React, { useState, useMemo, useCallback } from 'react';
-import { Icon, Popover, Menu } from 'antd';
 import './index.scss';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store';
+
+import { Icon, Menu, Popover } from 'antd';
 import { ClickParam } from 'antd/lib/menu';
+import React, { useCallback, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { RootState } from '../../store';
 import { setActiveSearchEngine } from '../../store/setting/actions';
 
 const SearchEngineSelector: React.FC = () => {
@@ -42,14 +44,10 @@ const SearchEngineSelector: React.FC = () => {
         offset: [20, 20],
       }}
       overlayClassName="search-engine-dropdown"
-      // getPopupContainer={() => {
-      //   return document.querySelector('.popover-inject-area') || document.body;
-      // }}
     >
       <div className="search-engine-selector">
         <div style={{ minWidth: 50 }}>{activeSearchEngine}</div>
         <Icon type={showDropdown ? 'caret-up' : 'caret-down'} />
-        {/* <div className="popover-inject-area"></div> */}
       </div>
     </Popover>
   );

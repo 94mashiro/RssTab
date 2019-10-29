@@ -5,7 +5,11 @@ const axios = Axios.create({
   timeout: 60000,
 });
 
-export const get = (endpoint: string, params: Record<string, any> = {}, config: AxiosRequestConfig = {}) => {
+export const get = (
+  endpoint: string,
+  params: Record<string, any> = {},
+  config: AxiosRequestConfig = {}
+) => {
   return axios.get(endpoint, {
     ...config,
     params,
