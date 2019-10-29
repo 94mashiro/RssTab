@@ -10,25 +10,20 @@ export const refreshSubscriptions = createAsyncAction(
 
 export const setActiveSubList = createAction(
   SubscriptionActionTypes.SET_ACTIVE_SUB_LIST,
-  action => {
-    return (link: string) => action(link);
-  }
-);
+  (link: string) => link
+)();
 
-export const setSubscription = createAction(SubscriptionActionTypes.SET_SUBSCRIPTION, action => {
-  return ({ link, data }: { link: string; data: Subscription }) => action({ link, data });
-});
+export const setSubscription = createAction(
+  SubscriptionActionTypes.SET_SUBSCRIPTION,
+  ({ link, data }: { link: string; data: Subscription }) => ({ link, data })
+)();
 
 export const setEnabledSubscriptions = createAction(
   SubscriptionActionTypes.SET_ENABLED_SUBSCRIPTIONS,
-  action => {
-    return (subscriptions: string[]) => action(subscriptions);
-  }
-);
+  (subscriptions: string[]) => subscriptions
+)();
 
 export const setRemindSubscriptions = createAction(
   SubscriptionActionTypes.SET_REMIND_SUBSCRIPTIONS,
-  action => {
-    return (subscriptions: string[]) => action(subscriptions);
-  }
-);
+  (subscriptions: string[]) => subscriptions
+)();
