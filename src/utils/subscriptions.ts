@@ -289,7 +289,7 @@ export const subscriptions = [
   {
     name: '币世界',
     category: '新媒体',
-    link: '/bishijie',
+    link: '/bishijie/kuaixun',
   },
   {
     name: '后续',

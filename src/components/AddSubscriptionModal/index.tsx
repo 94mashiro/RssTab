@@ -87,7 +87,7 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
       } else {
         return (
           <React.Fragment>
-            {channelCascaderData && (
+            {channelCascaderData && channelCascaderData.length > 0 && (
               <Form.Item required label="栏目">
                 {getFieldDecorator('#CHANNEL#')(
                   <Cascader options={channelCascaderData} placeholder="请选择一个栏目" />
