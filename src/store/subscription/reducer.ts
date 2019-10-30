@@ -6,16 +6,14 @@ import { SubscriptionList } from './types';
 export type SubscriptionState = Readonly<{
   list: SubscriptionList;
   activeSubList?: string;
-  refreshSubscriptions: boolean;
   enabledSubscriptions: string[];
   remindSubscriptions: string[];
 }>;
 
 const initialState: SubscriptionState = {
   list: {},
-  refreshSubscriptions: false,
-  activeSubList: 'jiemian/list/35',
-  enabledSubscriptions: ['jiemian/list/35'],
+  activeSubList: '',
+  enabledSubscriptions: [],
   remindSubscriptions: [],
 };
 
@@ -37,19 +35,6 @@ export const subscriptionReducer = (state: SubscriptionState = initialState, act
       return {
         ...state,
         activeSubList: action.payload,
-      };
-    }
-    case getType(actions.refreshSubscriptions.request): {
-      return {
-        ...state,
-        refreshSubscriptions: true,
-      };
-    }
-    case getType(actions.refreshSubscriptions.success):
-    case getType(actions.refreshSubscriptions.failure): {
-      return {
-        ...state,
-        refreshSubscriptions: false,
       };
     }
     case getType(actions.setEnabledSubscriptions): {

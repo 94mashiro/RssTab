@@ -4,6 +4,7 @@ import { Layout } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import AddSubscriptionModal from '../../components/AddSubscriptionModal';
 import Header from '../../components/Header';
 import RefreshButton from '../../components/RefreshButton';
 import RssList from '../../components/RssList';
@@ -15,7 +16,7 @@ const MainLayout: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshSubscriptions.request({ showMessage: false }));
-  }, []);
+  }, [dispatch]);
 
   return (
     <Layout style={{ height: '100%' }}>
@@ -45,6 +46,7 @@ const MainLayout: React.FC = () => {
           </Layout.Sider>
           <Layout.Content style={{ backgroundColor: '#fff' }}>
             <RssList />
+            <AddSubscriptionModal />
             <SubscriptionsSettingModal />
             <RefreshButton />
           </Layout.Content>

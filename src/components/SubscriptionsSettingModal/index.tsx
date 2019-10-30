@@ -25,7 +25,7 @@ const SubscriptionsSettingContent: React.FC = () => {
   }, []);
   const handleCancelModal = useCallback(() => {
     dispatch(setShowSubscriptionsSettingModal(false));
-  }, []);
+  }, [dispatch]);
   const handleSaveSettings = useCallback(() => {
     if (selectedSubscriptions.length === 0) {
       message.warn('请至少选择一个频道进行订阅');
@@ -33,7 +33,7 @@ const SubscriptionsSettingContent: React.FC = () => {
     }
     dispatch(setEnabledSubscriptions(selectedSubscriptions));
     dispatch(setShowSubscriptionsSettingModal(false));
-  }, [setEnabledSubscriptions, selectedSubscriptions]);
+  }, [selectedSubscriptions, dispatch]);
   return (
     <React.Fragment>
       <div className="modal-content">
@@ -71,7 +71,7 @@ const SubscriptionsSettingModal: React.FC = () => {
   const dispatch = useDispatch();
   const handleCancelModal = useCallback(() => {
     dispatch(setShowSubscriptionsSettingModal(false));
-  }, []);
+  }, [dispatch]);
   return (
     <Modal
       destroyOnClose={true}

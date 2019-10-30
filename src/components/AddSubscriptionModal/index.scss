@@ -1,0 +1,12 @@
+.subscription-form-content {
+  .form-footer {
+    padding: 10px 24px;
+    margin: 0 -24px -24px;
+    border-top: 1px solid #e3e3e3;
+    display: flex;
+    justify-content: flex-end;
+    .ant-btn {
+      margin-left: 8px;
+    }
+  }
+}

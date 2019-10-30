@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { all, fork } from 'redux-saga/effects';
 
 import { constantReducer, ConstantState } from './constant/reducer';
+import { loadingReducer, LoadingState } from './loading/reducer';
 import { modalReducer, ModalState } from './modal/reducers';
 import { settingReducer, SettingState } from './setting/reducer';
 import { settingSaga } from './setting/sagas';
@@ -13,6 +14,7 @@ export type RootState = {
   setting: SettingState;
   constant: ConstantState;
   modal: ModalState;
+  loading: LoadingState;
 };
 
 const reducers = combineReducers({
@@ -20,6 +22,7 @@ const reducers = combineReducers({
   setting: settingReducer,
   constant: constantReducer,
   modal: modalReducer,
+  loading: loadingReducer,
 });
 
 export const rootSaga = function* root() {

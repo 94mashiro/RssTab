@@ -6,8 +6,8 @@ import { all, call, delay, fork, put, select, take } from 'redux-saga/effects';
 import { RootState } from '..';
 import { fetchRssHubXml } from '../../utils/api';
 import { parseXmlToJson } from '../../utils/xml';
-import { Site } from '../constant/reducer';
 import * as SubscriptionActions from './actions';
+import { activeSubscriptionsSelector } from './selector';
 import { Subscription, SubscriptionActionTypes } from './types';
 
 function* mergeSubscription(link: string, data: Subscription) {
@@ -91,15 +91,11 @@ function* watchRefreshSubscriptions() {
       payload: { showMessage },
     } = yield take(SubscriptionActionTypes.REFRESH_SUBSCRIPTIONS_REQUEST);
     try {
-      const rssEndpoints: Site[] = yield select((state: RootState) => state.constant.rssEndpoints);
-      const enabledSubscriptions = yield select(
+      const enabledSubscriptions: string[] = yield select(
         (state: RootState) => state.subscription.enabledSubscriptions
       );
-      const refreshSubscriptions = rssEndpoints.filter(endpoint =>
-        enabledSubscriptions.includes(endpoint.link)
-      );
-      const refreshActions = refreshSubscriptions.map(item => {
-        return call(fetchSubscription, item.link);
+      const refreshActions = enabledSubscriptions.map(link => {
+        return call(fetchSubscription, link);
       });
       yield all(refreshActions);
       yield put(SubscriptionActions.refreshSubscriptions.success());
@@ -109,31 +105,6 @@ function* watchRefreshSubscriptions() {
     } catch (err) {
       yield put(SubscriptionActions.refreshSubscriptions.failure(err));
     }
-  }
-}
-
-function* watchSetEnabledSubscriptions() {
-  while (true) {
-    const { payload: enabledSubscriptions } = yield take(
-      SubscriptionActionTypes.SET_ENABLED_SUBSCRIPTIONS
-    );
-    const currentActiveSubscription = yield select(
-      (state: RootState) => state.subscription.activeSubList
-    );
-    const updatedSubscriptions = yield select((state: RootState) => {
-      const rssEndpoints = state.constant.rssEndpoints;
-      return rssEndpoints
-        .filter(endpoint => enabledSubscriptions.includes(endpoint.link))
-        .sort((a, b) => a.order - b.order);
-    });
-    if (enabledSubscriptions.length === 0) {
-      continue;
-    }
-    if (!enabledSubscriptions.includes(currentActiveSubscription)) {
-      const activeSubscription = updatedSubscriptions[0].link;
-      yield put(SubscriptionActions.setActiveSubList(activeSubscription));
-    }
-    yield put(SubscriptionActions.refreshSubscriptions.request({ showMessage: true }));
   }
 }
 
@@ -162,7 +133,6 @@ function* autoRefreshSubscriptionsTimer() {
 export function* subscriptionSaga() {
   yield all([
     fork(watchRefreshSubscriptions),
-    fork(watchSetEnabledSubscriptions),
     fork(watchSetActiveSubscription),
     fork(autoRefreshSubscriptionsTimer),
   ]);

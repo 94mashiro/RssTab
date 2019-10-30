@@ -15,7 +15,7 @@ const SearchInput: React.FC = () => {
         dispatch(searchKeywordAction(keyword));
       }
     },
-    [keyword]
+    [dispatch, keyword]
   );
   const handleInputKeyword = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

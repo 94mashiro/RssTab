@@ -9,9 +9,9 @@ import reducers, { rootSaga, RootState } from '../store';
 const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
-  key: 'root',
+  key: 'rsstab',
   storage: localforage,
-  blacklist: ['constant', 'modal'],
+  whitelist: ['subscription', 'setting'],
 };
 
 declare global {

@@ -10,12 +10,15 @@ import { setShowSubscriptionsSettingModal } from '../../store/modal/actions';
 const SettingDropdown: React.FC = () => {
   const dispatch = useDispatch();
 
-  const handleClickMenu = useCallback((param: ClickParam) => {
-    const { key } = param;
-    if (key === 'SUBSCRIPTIONS_SETTING') {
-      dispatch(setShowSubscriptionsSettingModal(true));
-    }
-  }, []);
+  const handleClickMenu = useCallback(
+    (param: ClickParam) => {
+      const { key } = param;
+      if (key === 'SUBSCRIPTIONS_SETTING') {
+        dispatch(setShowSubscriptionsSettingModal(true));
+      }
+    },
+    [dispatch]
+  );
 
   const menu = useMemo(
     () => (
@@ -26,7 +29,7 @@ const SettingDropdown: React.FC = () => {
         </Menu.Item>
       </Menu>
     ),
-    []
+    [handleClickMenu]
   );
 
   return (

@@ -6,11 +6,11 @@ import { RootState } from '../../store';
 import { refreshSubscriptions } from '../../store/subscription/actions';
 
 const RefreshButton: React.FC = () => {
-  const refreshing = useSelector((state: RootState) => state.subscription.refreshSubscriptions);
+  const refreshing = useSelector((state: RootState) => state.loading.loadingRefreshSubscriptions);
   const dispatch = useDispatch();
   const handleClickRefreshButton = useCallback(() => {
     dispatch(refreshSubscriptions.request({ showMessage: true }));
-  }, []);
+  }, [dispatch]);
   return (
     <Button
       type="primary"

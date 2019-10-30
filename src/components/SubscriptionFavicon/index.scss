@@ -1,0 +1,13 @@
+.subscription-favicon {
+  display: inline-flex;
+  height: 14px;
+  width: 14px;
+  border-radius: 4px;
+  border: 2px solid #9fa5b1;
+  margin-right: 8px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

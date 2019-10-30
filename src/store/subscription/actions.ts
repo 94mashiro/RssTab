@@ -10,7 +10,7 @@ export const refreshSubscriptions = createAsyncAction(
 
 export const setActiveSubList = createAction(
   SubscriptionActionTypes.SET_ACTIVE_SUB_LIST,
-  (link: string) => link
+  (link?: string) => link
 )();
 
 export const setSubscription = createAction(

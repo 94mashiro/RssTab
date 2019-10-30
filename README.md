@@ -1,5 +1,4 @@
 <h1 align="center">RssTab</h1>
-
 ## 介绍
 
 一个可以附着在新标签页的 RSS 阅读器，由 [RSSHub](https://github.com/DIYgod/RSSHub) 提供 RSS 支持。
@@ -27,5 +26,7 @@ npm run build
 
 ## Roadmap
 
-* 支持表单化的 RSS 地址构造。
+* ~~支持表单化的 RSS 地址构造。~~
 
+* 插件角标提醒获得更新的订阅数量。
+* 丰富表单化的 RSS 地址构造种类。

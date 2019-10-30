@@ -32,7 +32,7 @@ const SearchEngineSelector: React.FC = () => {
         ))}
       </Menu>
     ),
-    [searchEngines, selectedKeys]
+    [handleSelectSearchEngine, searchEngines, selectedKeys]
   );
   return (
     <Popover
