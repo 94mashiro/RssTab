@@ -1,6 +1,6 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   if (changeInfo.title === 'RssTab') {
-    chrome.tabs.query({ title: 'RssTab' }, oldTabs => {
+    chrome.tabs.query({ url: 'chrome://newtab/' }, oldTabs => {
       oldTabs
         .filter(tab => tab.id !== tabId)
         .forEach(tab => {
