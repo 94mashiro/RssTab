@@ -162,10 +162,10 @@ module.exports = function(webpackEnv) {
     entry: isEnvDevelopment ? [
       require.resolve('react-dev-utils/webpackHotDevClient'),
       paths.appIndexJs,
-      paths.appBackgroundJs,
     ] : {
       main: paths.appIndexJs,
-      background: paths.appBackgroundJs
+      // the background script src
+      background: path.join(__dirname, '../src/background.ts'),
     },
     output: {
       // The build folder.
@@ -279,9 +279,10 @@ module.exports = function(webpackEnv) {
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
       // https://github.com/facebook/create-react-app/issues/5358
-      runtimeChunk: {
-        name: entrypoint => `runtime-${entrypoint.name}`,
-      },
+      // runtimeChunk: {
+      //   name: entrypoint => `runtime-${entrypoint.name}`,
+      // },
+      runtimeChunk: false
     },
     resolve: {
       // This allows you to set a fallback for where Webpack should look for modules.
@@ -541,6 +542,7 @@ module.exports = function(webpackEnv) {
           {
             inject: true,
             template: paths.appHtml,
+            chunks: ['main']
           },
           isEnvProduction
             ? {

@@ -7,7 +7,7 @@
 ## 安装说明
 
 ### 安装商店扩展版本
-还在审核，暂未发布
+[Chrome Web Store](https://chrome.google.com/webstore/detail/rsstab/oifcackaolhmleikcbdjningdlhebhml?hl=zh-CN&authuser=0)
 
 ### 安装开发版本
 

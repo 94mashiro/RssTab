@@ -7,7 +7,6 @@ import { RootState } from '..';
 import { fetchRssHubXml } from '../../utils/api';
 import { parseXmlToJson } from '../../utils/xml';
 import * as SubscriptionActions from './actions';
-import { activeSubscriptionsSelector } from './selector';
 import { Subscription, SubscriptionActionTypes } from './types';
 
 function* mergeSubscription(link: string, data: Subscription) {

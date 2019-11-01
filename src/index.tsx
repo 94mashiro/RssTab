@@ -9,7 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import configureStore from './utils/configureStore';
 
-const { store, persistor } = configureStore();
+export const { store, persistor } = configureStore();
 
 message.config({
   top: 6,

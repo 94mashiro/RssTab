@@ -129,11 +129,11 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
       }
     };
     if (targetSubscription) {
-      const { link, name: source } = targetSubscription;
+      const { link, name: source, favicon } = targetSubscription;
       const name = getFieldsValue()['name'];
       const subscriptionLink = helper(link, source);
       const hasNotFound = subscriptionLink.includes(NOT_FOUND);
-      return hasNotFound ? false : { link: subscriptionLink, name };
+      return hasNotFound ? false : { link: subscriptionLink, name, favicon };
     } else {
       return false;
     }
@@ -145,8 +145,8 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
         if (!errors) {
           const formRet = vaildAndGenerateSubscriptionLink();
           if (formRet) {
-            const { name, link } = formRet;
-            dispatch(addCustomSubscription.request({ name, link }));
+            const { name, link, favicon } = formRet;
+            dispatch(addCustomSubscription.request({ name, link, favicon }));
           } else {
             message.error('请检查表单是否填写完整');
           }

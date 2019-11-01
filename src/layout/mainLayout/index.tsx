@@ -9,7 +9,6 @@ import Header from '../../components/Header';
 import RefreshButton from '../../components/RefreshButton';
 import RssList from '../../components/RssList';
 import Sider from '../../components/Sider';
-import SubscriptionsSettingModal from '../../components/SubscriptionsSettingModal';
 import { refreshSubscriptions } from '../../store/subscription/actions';
 
 const MainLayout: React.FC = () => {
@@ -47,7 +46,6 @@ const MainLayout: React.FC = () => {
           <Layout.Content style={{ backgroundColor: '#fff' }}>
             <RssList />
             <AddSubscriptionModal />
-            <SubscriptionsSettingModal />
             <RefreshButton />
           </Layout.Content>
         </Layout>

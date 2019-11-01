@@ -5,20 +5,14 @@ import { ClickParam } from 'antd/lib/menu';
 import React, { useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setShowSubscriptionsSettingModal } from '../../store/modal/actions';
-
 const SettingDropdown: React.FC = () => {
   const dispatch = useDispatch();
 
-  const handleClickMenu = useCallback(
-    (param: ClickParam) => {
-      const { key } = param;
-      if (key === 'SUBSCRIPTIONS_SETTING') {
-        dispatch(setShowSubscriptionsSettingModal(true));
-      }
-    },
-    [dispatch]
-  );
+  const handleClickMenu = useCallback((param: ClickParam) => {
+    const { key } = param;
+    if (key === 'SUBSCRIPTIONS_SETTING') {
+    }
+  }, []);
 
   const menu = useMemo(
     () => (

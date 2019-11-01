@@ -8,6 +8,7 @@ export const subscriptions = [
     name: 'BBC',
     category: '传统媒体',
     link: '/bbc/#CHANNEL#',
+    favicon: 'https://www.bbc.com/favicon.ico',
     channel: [
       ['中文', 'chinese'],
       ['World', 'world'],
@@ -25,6 +26,7 @@ export const subscriptions = [
     name: 'Solidot',
     category: '传统媒体',
     link: '/solidot/#CHANNEL#',
+    favicon: 'https://www.solidot.org/favicon.ico',
     channel: [
       ['全部', 'www'],
       ['创业', 'startup'],
@@ -47,6 +49,7 @@ export const subscriptions = [
   {
     name: 'The Economist',
     category: '传统媒体',
+    favicon: 'http://www.economist.com/assets/favicon.ico',
     link: '/the-economist/#CHANNEL#',
     channel: [
       ['The world this week', 'the-world-this-week'],
@@ -74,12 +77,14 @@ export const subscriptions = [
   {
     name: '第一财经',
     category: '传统媒体',
+    favicon: 'https://www.yicai.com/favicon.ico',
     link: '/yicai/#CHANNEL#',
     channel: [['直播区', 'brief']],
   },
   {
     name: '界面新闻',
     category: '传统媒体',
+    favicon: 'https://www.jiemian.com/favicon.ico',
     link: '/jiemian/list/#CHANNEL#',
     channel: [
       [
@@ -109,6 +114,7 @@ export const subscriptions = [
   {
     name: '南方周末',
     category: '传统媒体',
+    favicon: 'http://www.infzm.com/favicon.ico',
     link: '/infzm/#CHANNEL#',
     channel: [
       ['推荐', '1'],
@@ -124,12 +130,14 @@ export const subscriptions = [
   {
     name: '纽约时报',
     category: '传统媒体',
+    favicon: 'https://cn.nytimes.com/favicon.ico',
     link: '/nytimes/#CHANNEL#',
     channel: [['中文', ''], ['中英对照', 'dual'], ['英文', 'en']],
   },
   {
     name: '澎湃新闻',
     category: '传统媒体',
+    favicon: 'http://www.thepaper.cn/favicon.ico',
     link: '/thepaper/#CHANNEL#',
     channel: [
       ['精选', 'featured'],
@@ -143,12 +151,14 @@ export const subscriptions = [
   {
     name: '卫报',
     category: '传统媒体',
+    favicon: 'https://www.theguardian.com/favicon.ico',
     link: '/guardian/#CHANNEL#',
     channel: [['Editorial', 'editorial'], ['China', 'china']],
   },
   {
     name: '朝日新闻中文网',
     category: '传统媒体',
+    favicon: 'https://asahichinese-j.com/favicon.ico',
     link: '/asahichinese-j/#CHANNEL#',
     channel: [
       ['日本社会', 'society'],
@@ -181,32 +191,40 @@ export const subscriptions = [
   {
     name: '36kr',
     category: '新媒体',
+    favicon: 'http://www.36kr.com/favicon.ico',
     link: '/36kr/newsflashes',
   },
   {
     name: '9to5',
     category: '新媒体',
     link: '/9to5/#CHANNEL#',
+    favicon:
+      'https://i1.wp.com/9to5mac.com/wp-content/themes/9to5-2015/images/favicons/9to5mac/icon-192x192.png',
     channel: [['Mac', 'mac'], ['Google', 'google'], ['Toys', 'toys']],
   },
   {
     name: '电脑爱好者',
     category: '新媒体',
+    favicon: 'http://www.cfan.com.cn/favicon.ico',
     link: '/cfan/news',
   },
   {
     name: 'cnBeta',
     category: '新媒体',
+    favicon: 'https://www.cnbeta.com/favicon.ico',
     link: '/cnbeta',
   },
   {
     name: 'Engadget 瘾科技',
     category: '新媒体',
+    favicon:
+      'https://s.blogsmithmedia.com/www.engadget.com/assets-h045db91064c248cf4d54f147b8a59a95/images/favicon-16x16.png?h=288a0831497b5dbbde1fdb670dc8a62c',
     link: '/engadget-cn',
   },
   {
     name: 'InfoQ 中文',
     category: '新媒体',
+    favicon: 'https://static001.infoq.cn/static/infoq/www/img/InfoQ-share-icon2.jpg',
     link: '/infoq/#CHANNEL#',
     channel: [
       ['推荐', 'recommend'],
@@ -242,17 +260,20 @@ export const subscriptions = [
   {
     name: 'IT 橘子',
     category: '新媒体',
+    favicon: 'https://www.itjuzi.com/favicon.ico',
     link: '/itjuzi/#CHANNEL#',
     channel: [['投融资事件', 'invest'], ['并购事件', 'merge']],
   },
   {
     name: 'The Verge',
     category: '新媒体',
+    favicon: 'https://cdn.vox-cdn.com/uploads/chorus_asset/file/7395367/favicon-16x16.0.png',
     link: '/verge',
   },
   {
     name: 'ZAKER',
     category: '新媒体',
+    favicon: 'https://www.myzaker.com/favicon.ico',
     link: '/zaker/#CHANNEL#',
     channel: [
       ['头条新闻', 'source/12291'],
@@ -271,6 +292,7 @@ export const subscriptions = [
   {
     name: '爱范儿',
     category: '新媒体',
+    favicon: 'https://www.ifanr.com/favicon.ico',
     link: '/ifanr/#CHANNEL#',
     channel: [
       ['AppSolution', 'app'],
@@ -289,11 +311,13 @@ export const subscriptions = [
   {
     name: '币世界',
     category: '新媒体',
+    favicon: 'https://www.bishijie.com/favicon.ico',
     link: '/bishijie/kuaixun',
   },
   {
     name: '后续',
     category: '新媒体',
+    favicon: 'https://assets-1256259474.cos.ap-shanghai.myqcloud.com/icon-180.jpg',
     link: '/houxu/#CHANNEL#',
     channel: [
       ['最新专栏', 'events'],
@@ -303,6 +327,7 @@ export const subscriptions = [
   {
     name: '机核网',
     category: '新媒体',
+    favicon: 'https://www.gcores.com/favicon.ico',
     link: '/gcores/#CHANNEL#',
     channel: [
       ['资讯', 'category/news'],
@@ -314,6 +339,7 @@ export const subscriptions = [
   {
     name: '哔哩哔哩',
     category: '社交媒体',
+    favicon: 'http://space.bilibili.com/favicon.ico',
     link: '/bilibili/#CHANNEL#',
     channel: [
       ['番剧', 'bangumi/media/#番剧媒体ID#'],
@@ -489,6 +515,7 @@ export const subscriptions = [
   {
     name: '什么值得买',
     category: '购物',
+    favicon: 'https://www.smzdm.com/favicon.ico',
     link: '/smzdm/#CHANNEL#',
     channel: [
       ['关键词搜索', 'keyword/#关键词#'],
