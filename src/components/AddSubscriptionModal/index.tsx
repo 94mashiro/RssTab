@@ -16,7 +16,7 @@ type ContentProps = FormComponentProps;
 const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => {
   const { getFieldDecorator, getFieldsValue, setFieldsValue, validateFields } = props.form;
   const [selectedCategory, setSelectedCategory] = useState<string>();
-  const loadingAddCustomSubcription = useSelector(
+  const loadingAddCustomSubscription = useSelector(
     (state: RootState) => state.loading.loadingAddCustomSubscription
   );
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
   }, [dispatch]);
   const handleSelectCategory = useCallback(
     (value: string) => {
-      setFieldsValue({ channel: undefined });
+      setFieldsValue({ channel: undefined, name: value });
       setSelectedCategory(value);
     },
     [setFieldsValue]
@@ -105,7 +105,7 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
       }
     }
   }, [channelCascaderData, channelIdData, getFieldDecorator, selectedCategory, targetSubscription]);
-  const vaildAndGenerateSubscriptionLink = useCallback(() => {
+  const validAndGenerateSubscriptionLink = useCallback(() => {
     const NOT_FOUND = '$NOT_FOUND$';
     const helper = (url: string, source: string): string => {
       const formValues = getFieldsValue();
@@ -143,7 +143,7 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
       e.preventDefault();
       validateFields(errors => {
         if (!errors) {
-          const formRet = vaildAndGenerateSubscriptionLink();
+          const formRet = validAndGenerateSubscriptionLink();
           if (formRet) {
             const { name, link, favicon } = formRet;
             dispatch(addCustomSubscription.request({ name, link, favicon }));
@@ -153,7 +153,7 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
         }
       });
     },
-    [dispatch, vaildAndGenerateSubscriptionLink, validateFields]
+    [dispatch, validAndGenerateSubscriptionLink, validateFields]
   );
   return (
     <div className="subscription-form-content">
@@ -183,7 +183,7 @@ const AddSubscriptionContent: React.FC<ContentProps> = (props: ContentProps) => 
         </Form.Item>
         {<DynamicFormComponents />}
         <div className="form-footer">
-          <Button htmlType="submit" type="primary" loading={loadingAddCustomSubcription}>
+          <Button htmlType="submit" type="primary" loading={loadingAddCustomSubscription}>
             提交
           </Button>
           <Button onClick={handleCancelModal}>取消</Button>
@@ -202,9 +202,13 @@ const AddSubscriptionModal: React.FC = () => {
     dispatch(setShowAddSubscriptionModal(false));
   }, [dispatch]);
 
+  const handleChangeFormFieldsValue = useCallback((props, changeFields, allFields) => {}, []);
+
   const ContentWithForm = useMemo(() => {
-    return Form.create<ContentProps>()(AddSubscriptionContent);
-  }, []);
+    return Form.create<ContentProps>({
+      onFieldsChange: handleChangeFormFieldsValue,
+    })(AddSubscriptionContent);
+  }, [handleChangeFormFieldsValue]);
 
   return (
     <Modal

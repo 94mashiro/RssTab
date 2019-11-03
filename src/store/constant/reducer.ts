@@ -48,7 +48,7 @@ const initialState: ConstantState = {
       pattern: 'https://juejin.im/search?query=#REPLACE#&type=all',
     },
   ],
-  version: '1.1.3',
+  version: '1.1.4',
   homepage: 'https://github.com/mashirowang/rsstab',
 };
 

@@ -30,7 +30,8 @@
     "import/no-duplicates": [2],
     "sort-imports": [0],
     "react-hooks/rules-of-hooks": [2],
-    "react-hooks/exhaustive-deps": [1]
+    "react-hooks/exhaustive-deps": [1],
+    "react/prop-types": 0
   },
   "settings": {
     "react": {

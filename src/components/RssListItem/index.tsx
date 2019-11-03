@@ -10,7 +10,21 @@ interface Props {
   pubdate: string;
 }
 
-const RssListItem: React.FC<Props> = (props: Props) => {
+interface WrapperProps {
+  link?: string;
+}
+
+const RssListWrapper: React.FC<WrapperProps> = props => {
+  return props.link != null ? (
+    <a href={props.link} rel="noopener noreferrer" target="_blank">
+      {props.children}
+    </a>
+  ) : (
+    <React.Fragment>{props.children}</React.Fragment>
+  );
+};
+
+const RssListItem: React.FC<Props> = props => {
   const imgLink = useMemo(() => {
     const srcReg = /src=['"]?([^'"]*)['"]?/i;
     const matchRet = (props.description || '').match(srcReg) || [];
@@ -50,7 +64,7 @@ const RssListItem: React.FC<Props> = (props: Props) => {
 
   return (
     <div className="rss-list-item">
-      <a href={props.link} rel="noopener noreferrer" target="_blank">
+      <RssListWrapper link={props.link}>
         <div className="item-header">
           <div className="title">{props.title}</div>
           <div className="date">{timeAgo}</div>
@@ -65,7 +79,7 @@ const RssListItem: React.FC<Props> = (props: Props) => {
             </div>
           )}
         </div>
-      </a>
+      </RssListWrapper>
     </div>
   );
 };
